@@ -13,5 +13,5 @@ Usage example for Traefik with TSL and Cloudflare
 
 > A: *.example.com 172.16.58.3 (Cloudflare)
 
-Also, change the domain in `traefik/traefik.toml` and `service/docker-compose.yml` to your domain
+Also, change the domain in `service/docker-compose.yml` to your domain
 
