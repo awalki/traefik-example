@@ -2,6 +2,7 @@
 services:
   backend: 
     container_name: fastapi-backend-1
+    build: .
     image: fastapi-backend:latest
     networks:
       - backend

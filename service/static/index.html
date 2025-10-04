@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+    <title>Details</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1>Order development services from @ohnelicht (telegram)</h1>
+    <div>
+    <ul>
+      {% for item in items %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    </div>
+</body>
+</html>

@@ -1,6 +1,28 @@
-def main():
-    print("Hello from traefik-example!")
+from typing import Union
+
+from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, Request
+from starlette.templating import Jinja2Templates
+
+app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
+items = {
+    1: "MacBook Air M4 13.6",
+    2: "iPhone 17 Pro Max",
+    3: "iPad Pro 14.4",
+}
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/")
+def root(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="index.html", context={"items": items}
+    )
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
