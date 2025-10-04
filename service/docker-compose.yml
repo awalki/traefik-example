@@ -14,6 +14,8 @@ services:
       - traefik.http.routers.fastapi-backend-https.tls.certResolver=cloudflare
       - traefik.http.routers.fastapi-backend-https.entrypoints=websecure
       - traefik.http.routers.fastapi-backend-https.rule=Host(`api.miraclet.fun`)
+
+      - traefik.http.services.fastapi-backend.loadbalancer.server.port=8081
     restart: unless-stopped
 networks:
   backend:
