@@ -8,8 +8,12 @@ services:
       - backend
     labels:
       - traefik.enable=true
-      - traefik.http.routers.fastapi-backend.rule=Host(`api.miraclet.fun`)
-      - traefik.http.routers.fastapi-backend.entrypoints=web
+      - traefik.http.routers.fastapi-backend-http.rule=Host(`api.miraclet.fun`)
+      - traefik.http.routers.fastapi-backend-http.entrypoints=web
+      - traefik.http.routers.fastapi-backend-https.tls=true
+      - traefik.http.routers.fastapi-backend-https.tls.certResolver=cloudflare
+      - traefik.http.routers.fastapi-backend-https.entrypoints=websecure
+      - traefik.http.routers.fastapi-backend-https.rule=Host(`api.miraclet.fun`)
     restart: unless-stopped
 networks:
   backend:
