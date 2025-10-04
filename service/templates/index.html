@@ -6,8 +6,8 @@
     <h1>Order development services from @ohnelicht (telegram)</h1>
     <div>
     <ul>
-      {% for item in items %}
-        <li>{{ item }}</li>
+      {% for key, value in items.items() %}
+        <li>{{ key }}: {{ value }}</li>
       {% endfor %}
     </ul>
     </div>
