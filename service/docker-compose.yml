@@ -1,0 +1,15 @@
+---
+services:
+  backend: 
+    container_name: fastapi-backend-1
+    image: fastapi-backend:latest
+    networks:
+      - backend
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.fastapi-backend.rule=Host(`api.miraclet.fun`)
+      - traefik.http.routers.fastapi-backend.entrypoints=web
+    restart: unless-stopped
+networks:
+  backend:
+    external: true

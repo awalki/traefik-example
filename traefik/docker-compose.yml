@@ -1,0 +1,18 @@
+---
+services:
+  traefik:
+    image: traefik:v3.5.3
+    container_name: traefik-example-1
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
+    networks:
+      - backend
+    restart: unless-stopped
+networks:
+  backend:
+    external: true
